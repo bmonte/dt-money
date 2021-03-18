@@ -20,7 +20,7 @@ export function NewTransactionModal({ isOpen, onRequestClose }: NewTransactionMo
   
   const [type, setType] = useState<'deposit' | 'withdraw'>('deposit');
   const [name, setName] = useState('');
-  const [amount, setAmount] = useState(0);
+  const [amount, setAmount] = useState<number | undefined>(undefined);
   const [category, setCategory] = useState('');
 
 
@@ -29,7 +29,7 @@ export function NewTransactionModal({ isOpen, onRequestClose }: NewTransactionMo
 
     await createTransaction({
       name,
-      amount,
+      amount: amount || 0,
       type,
       category
     });
